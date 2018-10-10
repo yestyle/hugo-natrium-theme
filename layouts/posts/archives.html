@@ -1,0 +1,15 @@
+{{ partial "header.html" . }}
+
+<main class="content">
+  <div class="list">
+    {{ range ((where .Site.Pages "Type" "post").GroupByDate "2006-01") }}
+    <h2 class="list-title">{{ dateFormat "Jan 2006" (delimit (slice .Key "02") "-" | string) }}</h2>
+    {{ range .Pages }}
+    {{ partial "list-item.html" . }}
+    {{ end }}
+    {{ end }}
+  </div>  
+
+</main>
+
+{{ partial "footer.html" . }}

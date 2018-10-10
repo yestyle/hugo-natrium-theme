@@ -1,0 +1,18 @@
+{{ partial "header.html" . }}
+
+<main class="content" role="main">
+  <article class="article">
+  <div class="article-content">
+    {{ range (where .Pages "Type" "intro") }}
+    {{ .Content }}
+    {{ end }}
+    <hr />
+    {{ range (.Paginate (where .Pages "Type" "page").ByDate.Reverse 1).Pages }}
+    {{ .Content }}
+    {{ end }}
+  </div>  
+  </article>
+  {{ partial "1se-pagination.html" . }}
+</main>
+
+{{ partial "footer.html" . }}
