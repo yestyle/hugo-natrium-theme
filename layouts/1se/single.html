@@ -1,0 +1,18 @@
+{{- $year := int .File.TranslationBaseName -}}
+{{- $totalPages := len .CurrentSection.Pages -}}
+{{- $pageNumber := sub (add 2016 $totalPages) $year -}}
+{{- $new := delimit (slice "page" $pageNumber) "/" -}}
+{{- $url := replace .Permalink $year $new -}}
+{{- if eq $pageNumber 1 -}}
+  {{- $url = .CurrentSection.URL | absLangURL -}}
+{{- end -}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{- $url -}}</title>
+    <link rel="canonical" href="{{- $url -}}"/>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0; url={{- $url -}}" />
+  </head>
+</html>
