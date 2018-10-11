@@ -1,20 +1,20 @@
-{{ partial "header.html" . }}
+{{- partial "header.html" . -}}
 
 <main class="content">
 
   <div class="list">
-     {{ range (.Paginate ((where .Data.Pages "Type" "post").GroupByDate "2006")).PageGroups }}    
-  <h2 class="list-title">{{ .Key }}</h2>
-    {{ range .Pages }}
+     {{- range (.Paginate ((where .Data.Pages "Type" "post").GroupByDate "2006")).PageGroups -}}    
+  <h2 class="list-title">{{- .Key -}}</h2>
+    {{- range .Pages -}}
     
-    {{ partial "list-item.html" . }}
+    {{- partial "list-item.html" . -}}
 
-    {{ end }}
-    {{ end }}
+    {{- end -}}
+    {{- end -}}
   </div>  
 
-  {{ partial "pagination.html" . }}
+  {{- partial "pagination.html" . -}}
 
 </main>
 
-{{ partial "footer.html" . }}
+{{- partial "footer.html" . -}}

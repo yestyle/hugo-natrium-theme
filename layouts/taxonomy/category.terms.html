@@ -1,22 +1,22 @@
-{{ partial "header.html" . }}
+{{- partial "header.html" . -}}
 
 <main class="content">
 
   <div class="category">
-    <h2 class="category-title">{{ i18n "categories" }}</h2>
-    {{ $data := .Data }}
-    {{ range $key, $value := .Data.Terms.Alphabetical }}
+    <h2 class="category-title">{{- i18n "categories" -}}</h2>
+    {{- $data := .Data -}}
+    {{- range $key, $value := .Data.Terms.Alphabetical -}}
     <ul class="category-item">
       <li>
-        <a href="{{ $.Site.LanguagePrefix }}/{{ $data.Plural }}/{{ $value.Name | urlize }}">{{ $value.Name }}</a>
+        <a href="{{- $.Site.LanguagePrefix -}}/{{- $data.Plural -}}/{{- $value.Name | urlize -}}">{{- $value.Name -}}</a>
         <span class="category-item-count">
-          <sup>({{ $value.Count }})</sup>
+          <sup>({{- $value.Count -}})</sup>
        </span>
       </li>
     </ul>   
-    {{ end }}
+    {{- end -}}
   </div>
 
 </main>
 
-{{ partial "footer.html" . }}
+{{- partial "footer.html" . -}}
