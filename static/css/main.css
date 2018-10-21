@@ -429,6 +429,7 @@ blockquote {
 
 .fa-rss::before {
   content: "\f09e";
+  padding: 0 5px 0 0;
 }
 
 .fa-chevron-up::before {
@@ -437,6 +438,7 @@ blockquote {
 
 .fa-github::before {
   content: "\f09b";
+  padding: 0 5px 0 0;
 }
 
 .fa-tags::before {
