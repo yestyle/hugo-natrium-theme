@@ -4,11 +4,12 @@
   <article class="article">
     <h1 class="article-title">{{- .Title -}}</h1>
     {{- if eq .Type "post" -}}
-    <span class="article-date">{{- .Date.Format "02 Jan 2006" -}}
-    {{- if isset .Params "author" -}}
-      , {{ (index .Site.Data.authors .Params.author).FullName -}}
-    {{- end -}}
-    </span>
+      <span class="article-date">{{- .Date.Format "02 Jan 2006" -}}</span>
+      {{- if .Params.authors -}}
+      <span class="article-author">
+        {{- range .Params.authors -}}, <a href="{{- "authors/" | relURL -}}{{- . | urlize -}}">{{- (index $.Site.Data.authors .).FullName -}}</a>{{- end -}}
+      {{- end -}}
+      </span>
     {{- end -}}
 
     <div class="article-content">

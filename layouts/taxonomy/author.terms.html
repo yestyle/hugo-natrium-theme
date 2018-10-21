@@ -1,0 +1,31 @@
+{{- partial "header.html" . -}}
+
+<main class="content">
+
+  <div class="tag-cloud">
+    <h2 class="tag-cloud-title">{{- i18n "authors" -}}</h2>
+    {{- if not (eq (len $.Site.Taxonomies.authors) 0) -}}
+    {{- $fontUnit := "rem" -}}
+    {{- $largestFontSize := 2.5 -}}
+    {{- $smallestFontSize := 1.0 -}}
+    {{- $fontSpread := sub $largestFontSize $smallestFontSize -}}
+    {{- $max := add (len (index $.Site.Taxonomies.authors.ByCount 0).Pages) 1 -}}
+    {{- $min := len (index $.Site.Taxonomies.authors.ByCount.Reverse 0).Pages -}}
+    {{- $spread := sub $max $min -}}
+    {{- $fontStep := div $fontSpread $spread -}}
+    <ul class="tag-cloud-item">
+        {{- range $name, $taxonomy := $.Site.Taxonomies.authors -}}
+            {{- $currentTagCount := len $taxonomy.Pages -}}
+            {{- $currentFontSize := (add $smallestFontSize (mul (sub $currentTagCount $min) $fontStep) ) -}}
+            {{- $count := len $taxonomy.Pages -}}
+            {{- $weigth := div (sub (math.Log $count) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) -}}
+            {{- $currentFontSize := (add $smallestFontSize (mul (sub $largestFontSize $smallestFontSize) $weigth) ) -}}
+            <li><a href="{{- "/authors/" | relLangURL -}}{{- $name | urlize -}}" style="font-size:{{$currentFontSize}}{{$fontUnit}}">{{- (index $.Site.Data.authors $name).FullName -}}</a></li>
+        {{- end -}}
+    </ul>
+    {{- end -}}
+  </div>
+
+</main>
+
+{{- partial "footer.html" . -}}

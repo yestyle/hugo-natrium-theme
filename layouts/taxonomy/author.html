@@ -1,0 +1,18 @@
+{{- partial "header.html" . -}}
+
+<main class="content" role="main">
+
+  <div class="list">
+    <h2 class="list-title">{{- (index .Site.Data.authors .Title).FullName -}}</h2>
+    {{- range where .Paginator.Pages "Section" "posts" -}}
+
+    {{- partial "list-item.html" . -}}
+
+    {{- end -}}
+   </div>
+
+  {{- partial "pagination.html" . -}}
+
+</main>
+
+{{- partial "footer.html" . -}}
