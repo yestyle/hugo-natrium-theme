@@ -7,8 +7,12 @@
 <meta property="og:title" content="{{- .Title -}}">
 <meta property="og:type" content="website">
 {{- else -}}
-<title>{{ .Title }} - {{ .Site.Title }}</title>
-<meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+{{- $title := .Title -}}
+{{- if and (eq .Kind "taxonomy") (index .Site.Data.authors .Title) -}}
+{{- $title = (index .Site.Data.authors .Title).FullName -}}
+{{- end -}}
+<title>{{ $title }} - {{ .Site.Title }}</title>
+<meta property="og:title" content="{{ $title }} - {{ .Site.Title }}">
 {{- end -}}
 
 {{- if eq .URL "/" -}}
