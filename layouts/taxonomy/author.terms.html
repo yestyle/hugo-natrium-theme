@@ -2,8 +2,8 @@
 
 <main class="content">
   <article class="article">
-    <h1 class="article-title">{{- i18n "authors" -}}</h1>
     <div class="article-content">
+    {{- .Content -}}
     {{- range $name,$taxonomy := $.Site.Taxonomies.authors -}}
       {{- $postCount := len (where $taxonomy.Pages "Section" "posts") -}}
       <h2><a href="{{- "/authors/" | relLangURL -}}{{- $name | urlize -}}">{{- (index $.Site.Data.authors $name).FullName -}}</a></h2>
@@ -11,7 +11,7 @@
       {{- range where $taxonomy.Pages "Section" "posts" -}}
         {{- $wordCount = add $wordCount .WordCount -}}
       {{- end -}}
-      <p>Wrote {{ $postCount }} posts with {{ $wordCount }} words in total, {{ div $wordCount $postCount }} words per post.</p>
+      <p>发布文章 {{ $postCount }} 篇，共计 {{ $wordCount }} 字，平均每篇 {{ div $wordCount $postCount }} 字。</p>
     {{- end -}}
     </div>
   </article>
