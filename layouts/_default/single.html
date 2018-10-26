@@ -29,6 +29,16 @@
         <i class="fa fa-tags"></i>{{- range $index, $tag := .Params.tags -}}{{- if gt $index 0 -}}{{- end -}}<a href="{{- "tags/" | relURL -}}{{- . | urlize -}}">{{- . -}}</a>{{- end -}}
       </li>
       {{- end -}}
+
+      {{- with (.Site.RegularPages.Related . | first 5) -}}
+      <hr>
+      <h3>See Also</h3>
+      <ul>
+        {{- range . -}}
+          <li><a href="{{- .RelPermalink -}}">{{- .Title -}}</a></li>
+        {{- end -}}
+      </ul>
+      {{- end -}}
   </article>
 
   {{- template "_internal/disqus.html" . -}}
