@@ -172,6 +172,7 @@ blockquote {
 }
 
 .article-author a {
+  margin: 0 10px 0 10px;
   text-decoration: none;
   color: inherit;
   border-bottom: medium solid #f0f0f0;

@@ -7,7 +7,11 @@
       <span class="article-date">{{- .Date.Format "02 Jan 2006" -}}</span>
       {{- if .Params.authors -}}
       <span class="article-author">
-        {{- range .Params.authors -}}, <a href="{{- "authors/" | relURL -}}{{- . | urlize -}}">{{- (index $.Site.Data.authors .).FullName -}}</a>{{- end -}}
+        {{- $max := sub (len .Params.authors) 1 -}}
+        {{- range $index, $author := .Params.authors -}}
+          <a href="{{- "authors/" | relURL -}}{{- $author | urlize -}}">{{- (index $.Site.Data.authors $author).FullName -}}</a>
+          {{- if ne $index $max -}}/{{- end -}}
+        {{- end -}}
       {{- end -}}
       </span>
     {{- end -}}
