@@ -10,7 +10,7 @@
         {{- $max := sub (len .Params.authors) 1 -}}
         {{- range $index, $author := .Params.authors -}}
           <a href="{{- "authors/" | relURL -}}{{- $author | urlize -}}">{{- (index $.Site.Data.authors $author).FullName -}}</a>
-          {{- if ne $index $max -}}/{{- end -}}
+          {{- if ne $index $max }} / {{ end -}}
         {{- end -}}
       {{- end -}}
       </span>

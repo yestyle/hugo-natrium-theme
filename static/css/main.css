@@ -171,8 +171,11 @@ blockquote {
   color: #ccc;
 }
 
+.article-author {
+  margin-left: 10px;
+}
+
 .article-author a {
-  margin: 0 10px 0 10px;
   text-decoration: none;
   color: inherit;
   border-bottom: medium solid #f0f0f0;
@@ -521,6 +524,10 @@ blockquote {
   .article-date,
   .article-author {
     font-size: 19px;
+  }
+
+  .article-author {
+    margin-left: 10px;
   }
 
   .article-taxonomy {
