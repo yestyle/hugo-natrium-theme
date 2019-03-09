@@ -6,7 +6,21 @@
     {{- .Content -}}
     {{- range $name,$taxonomy := $.Site.Taxonomies.authors -}}
       {{- $postCount := len (where $taxonomy.Pages "Section" "posts") -}}
-      <h2><a href="{{- "/authors/" | relLangURL -}}{{- $name | urlize -}}">{{- (index $.Site.Data.authors $name).FullName -}}</a></h2>
+      <h2>
+        <a href="{{- "/authors/" | relLangURL -}}{{- $name | urlize -}}">{{- (index $.Site.Data.authors $name).FullName -}}</a>
+        {{- $twitter := (index $.Site.Data.authors $name).Twitter -}}
+        {{- with $twitter -}}
+          <a href="https://twitter.com/{{- . -}}"><i class="fab fa-twitter"></i></a>
+        {{- end -}}
+        {{- $telegram := (index $.Site.Data.authors $name).Telegram -}}
+        {{- with $telegram -}}
+          <a href="https://t.me/{{- . -}}"><i class="fab fa-telegram-plane"></i></a>
+        {{- end -}}
+        {{- $instagram := (index $.Site.Data.authors $name).Instagram -}}
+        {{- with $instagram -}}
+          <a href="https://instagram.com/{{- . -}}"><i class="fab fa-instagram"></i></a>
+        {{- end -}}
+      </h2>
       {{- $wordCount := 0 -}}
       {{- range where $taxonomy.Pages "Section" "posts" -}}
         {{- $wordCount = add $wordCount .WordCount -}}
