@@ -4,7 +4,7 @@
 {{- $new := delimit (slice "page" $pageNumber) "/" -}}
 {{- $url := replace .Permalink $year $new -}}
 {{- if eq $pageNumber 1 -}}
-  {{- $url = .CurrentSection.URL | absLangURL -}}
+  {{- $url = .CurrentSection.RelPermalink | absLangURL -}}
 {{- end -}}
 <!DOCTYPE html>
 <html>
