@@ -17,7 +17,11 @@
     {{- end -}}
 
     <div class="article-content">
-      {{- .Content -}}
+      {{- /* Ruby */ -}}
+      {{- /* [EN]^(English) -> <ruby>EN<rt>English</rt></ruby> */ -}}
+      {{- $REin := `\[(.+?)\]\^\((.+?)\)` -}}
+      {{- $REout := `<ruby>$1<rt>$2</rt></ruby>` -}}
+      {{- replaceRE $REin $REout .Content | safeHTML -}}
     </div>
  
     <ul class="article-taxonomy">
