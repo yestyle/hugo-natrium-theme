@@ -20,6 +20,10 @@
         {{- with $instagram -}}
           <a href="https://instagram.com/{{- . -}}"><i class="fab fa-instagram"></i></a>
         {{- end -}}
+        {{- $linkedin := (index $.Site.Data.authors $name).LinkedIn -}}
+        {{- with $linkedin -}}
+          <a href="https://www.linkedin.com/in/{{- . -}}"><i class="fab fa-linkedin-in"></i></a>
+        {{- end -}}
       </h2>
       {{- $wordCount := 0 -}}
       {{- range where $taxonomy.Pages "Section" "posts" -}}

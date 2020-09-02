@@ -503,9 +503,15 @@ blockquote {
   padding: 0 5px 0 0;
 }
 
+.fa-linkedin-in::before {
+  content: "\f0e1";
+  padding: 0 5px 0 0;
+}
+
 h2 .fa-twitter,
 h2 .fa-telegram-plane,
-h2 .fa-instagram {
+h2 .fa-instagram,
+h2 .fa-linkedin-in {
   padding: 0 0 0 10px;
 }
 
