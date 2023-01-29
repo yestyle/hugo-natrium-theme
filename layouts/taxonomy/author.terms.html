@@ -12,6 +12,10 @@
         {{- with $twitter -}}
           <a href="https://twitter.com/{{- . -}}"><i class="fab fa-twitter"></i></a>
         {{- end -}}
+        {{- $mastodon := (index $.Site.Data.authors $name).Mastodon -}}
+        {{- with $mastodon -}}
+          <a href="https://{{- . -}}"><i class="fab fa-mastodon"></i></a>
+        {{- end -}}
         {{- $telegram := (index $.Site.Data.authors $name).Telegram -}}
         {{- with $telegram -}}
           <a href="https://t.me/{{- . -}}"><i class="fab fa-telegram-plane"></i></a>

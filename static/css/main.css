@@ -493,6 +493,11 @@ blockquote {
   padding: 0 5px 0 0;
 }
 
+.fa-mastodon::before {
+  content: "\f4f6";
+  padding: 0 5px 0 0;
+}
+
 .fa-telegram-plane::before {
   content: "\f3fe";
   padding: 0 5px 0 0;
@@ -509,6 +514,7 @@ blockquote {
 }
 
 h2 .fa-twitter,
+h2 .fa-mastodon,
 h2 .fa-telegram-plane,
 h2 .fa-instagram,
 h2 .fa-linkedin-in {
