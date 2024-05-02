@@ -488,6 +488,11 @@ blockquote {
   padding: 0 10px 0px 0;
 }
 
+.fa-bluesky::before {
+  content: "\e671";
+  padding: 0 5px 0 0;
+}
+
 .fa-twitter::before {
   content: "\f099";
   padding: 0 5px 0 0;
@@ -513,6 +518,7 @@ blockquote {
   padding: 0 5px 0 0;
 }
 
+h2 .fa-bluesky,
 h2 .fa-twitter,
 h2 .fa-mastodon,
 h2 .fa-telegram-plane,

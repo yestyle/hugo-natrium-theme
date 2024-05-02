@@ -8,6 +8,10 @@
       {{- $postCount := len (where $taxonomy.Pages "Section" "posts") -}}
       <h2>
         <a href="{{- "/authors/" | relLangURL -}}{{- $name | urlize -}}">{{- (index $.Site.Data.authors $name).FullName -}}</a>
+        {{- $bluesky := (index $.Site.Data.authors $name).Bluesky -}}
+        {{- with $bluesky -}}
+          <a href="https://bsky.app/profile/{{- . -}}"><i class="fab fa-bluesky"></i></a>
+        {{- end -}}
         {{- $twitter := (index $.Site.Data.authors $name).Twitter -}}
         {{- with $twitter -}}
           <a href="https://twitter.com/{{- . -}}"><i class="fab fa-twitter"></i></a>
