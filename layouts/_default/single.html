@@ -4,16 +4,17 @@
   <article class="article">
     <h1 class="article-title">{{- .Title -}}</h1>
     {{- if eq .Type "post" -}}
-      <span class="article-date">{{- .Date.Format "02 Jan 2006" -}}</span>
-      {{- if .Params.authors -}}
-      <span class="article-author">
-        {{- $max := sub (len .Params.authors) 1 -}}
-        {{- range $index, $author := .Params.authors -}}
-          <a href="{{- "authors/" | relURL -}}{{- $author | urlize -}}">{{- (index $.Site.Data.authors $author).FullName -}}</a>
-          {{- if ne $index $max }} / {{ end -}}
-        {{- end -}}
+    <span class="article-date">{{- .Date.Format "02 Jan 2006" -}}</span>
+    {{- if .Params.authors -}}
+    <span class="article-author">
+      {{- $max := sub (len .Params.authors) 1 -}}
+      {{- range $index, $author := .Params.authors -}}
+      <a href="{{- " authors/" | relURL -}}{{- $author | urlize -}}">{{- (index $.Site.Data.authors $author).FullName
+        -}}</a>
+      {{- if ne $index $max }} / {{ end -}}
       {{- end -}}
-      </span>
+      {{- end -}}
+    </span>
     {{- end -}}
 
     <div class="article-content">
@@ -23,18 +24,20 @@
       {{- $REout := `<ruby>$1<rt>$2</rt></ruby>` -}}
       {{- replaceRE $REin $REout .Content | safeHTML -}}
     </div>
- 
+
     <ul class="article-taxonomy">
-      {{- if .Params.categories -}}            
+      {{- if .Params.categories -}}
       <hr>
       <li>
-        <i class="fa fa-folder-open"></i>{{- range $index, $category := .Params.categories -}}{{- if gt $index 0 -}}{{- end -}}<a href="{{- "categories/" | relURL -}}{{- . | urlize -}}">{{- . -}}</a>{{- end -}}
+        <i class="fa fa-folder-open"></i>{{- range $index, $category := .Params.categories -}}{{- if gt $index 0 -}}{{-
+        end -}}<a href="{{- " categories/" | relURL -}}{{- . | urlize -}}">{{- . -}}</a>{{- end -}}
       </li>
       {{- end -}}
-    
+
       {{- if .Params.tags -}}
       <li>
-        <i class="fa fa-tags"></i>{{- range $index, $tag := .Params.tags -}}{{- if gt $index 0 -}}{{- end -}}<a href="{{- "tags/" | relURL -}}{{- . | urlize -}}">{{- . -}}</a>{{- end -}}
+        <i class="fa fa-tags"></i>{{- range $index, $tag := .Params.tags -}}{{- if gt $index 0 -}}{{- end -}}<a
+          href="{{- " tags/" | relURL -}}{{- . | urlize -}}">{{- . -}}</a>{{- end -}}
       </li>
       {{- end -}}
 
@@ -43,14 +46,14 @@
       <h3>See Also</h3>
       <ul>
         {{- range . -}}
-          <li><a href="{{- .RelPermalink -}}">{{- .Title -}}</a></li>
+        <li><a href="{{- .RelPermalink -}}">{{- .Title -}}</a></li>
         {{- end -}}
       </ul>
       {{- end -}}
   </article>
 
-  {{- if .Site.DisqusShortname -}}
-    {{- template "_internal/disqus.html" . -}}
+  {{- if .Site.Config.Services.Disqus.Shortname -}}
+  {{- template "_internal/disqus.html" . -}}
   {{- end -}}
 
 </main>

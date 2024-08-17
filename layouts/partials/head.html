@@ -1,10 +1,11 @@
-{{- with .Site.GoogleAnalytics -}}
+{{- with .Site.Config.Services.GoogleAnalytics.ID -}}
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{.}}"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8274961363933121" crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8274961363933121"
+  crossorigin="anonymous"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() {dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', '{{.}}');
@@ -31,13 +32,13 @@
 {{- if eq .RelPermalink "/" -}}
 <meta property="description" content="{{- .Site.Params.description -}}">
 {{- else -}}
-  {{- if .Description -}}
-  <meta property="description" content="{{- .Description -}}">
-  {{- end -}}
+{{- if .Description -}}
+<meta property="description" content="{{- .Description -}}">
+{{- end -}}
 {{- end -}}
 
 {{- if .Keywords -}}
-<meta property="keywords" content ="{{- delimit .Keywords ", " -}}">
+<meta property="keywords" content="{{- delimit .Keywords " , " -}}">
 {{- end -}}
 
 {{- with .OutputFormats.Get "FEED" -}}
